@@ -41,6 +41,7 @@ public class Main {
             }
             System.out.println("\n");
         } while (!salir);
+
         teclado.close();
     }
 }
