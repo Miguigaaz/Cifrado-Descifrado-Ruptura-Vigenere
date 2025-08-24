@@ -3,8 +3,7 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Ruptura {
-    public static void main(String[] args) {
-        Scanner teclado = new Scanner(System.in);
+    public static void iniciar(Scanner teclado) {
         int longitudMinima = 4;
         String textoCifrado = elegirOpcion(teclado);
 
@@ -17,8 +16,6 @@ public class Ruptura {
         int [][] frecuencias = contarLetrasEnSubtextos(subTextos);
         StringBuilder posibleClave = encontrarDesplazamientoAEO(frecuencias);
         System.out.printf("La clave más probable es: %s\n", posibleClave);
-        teclado.close();
-
     }
 
     private static String elegirOpcion(Scanner teclado){
@@ -37,7 +34,6 @@ public class Ruptura {
                 return Utilidades.limpiarTexto(contenido.toString());
             } catch (FileNotFoundException e) {
                 System.out.println("Archivo no encontrado. Por favor, intenta de nuevo.");
-                teclado.nextLine();
             }
         }
     }

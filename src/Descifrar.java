@@ -3,13 +3,26 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class Descifrar {
-    public static void main(String[] args) {
-        Scanner teclado = new Scanner(System.in);
+    public static void iniciar(Scanner teclado) {
+        int opcion = -1;
 
-        System.out.println("Descifrar un texto nuevo (1) \n" +
-                "Descifrar de un documento existente (2)");
-        int opcion = teclado.nextInt();
-        teclado.nextLine();
+        do {
+            System.out.println("""
+                Descifrar un texto nuevo (1)
+                Descifrar de un documento existente (2)""");
+
+            try {
+                opcion = teclado.nextInt();
+                teclado.nextLine();
+                if (opcion != 1  && opcion != 2){
+                    System.out.println("Error, ingresa un numero valido");
+                }
+            } catch (InputMismatchException exception) {
+                System.out.println("Error, ingresa un numero valido");
+                teclado.nextLine();
+            }
+
+        } while (opcion != 1  && opcion != 2);
 
         String textoCifrado = elegirOpcion(opcion,teclado);
 
